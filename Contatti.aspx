@@ -10,18 +10,22 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <style>
+        @media only screen and (max-width: 767px) {
+            #contact {
+                
+            }
+            #jumbo {
+                 padding-top:2px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="cover">
         <div class="navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="Homepage.aspx" style="color: white;">RobertoCedioli</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -56,52 +60,45 @@
                 </div>
             </div>
         </div>
-        <div class="cover-image" style="background-image: url('img/Dettaglio_Homepage.jpg')"></div>
+        <asp:Repeater ID="backgroundRepeater" runat="server">
+            <ItemTemplate>
+        <div class="cover-image" style="background-image: url('<%# Eval("Sfondo") %>')"></div>
+                </ItemTemplate>
+        </asp:Repeater>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jumbotron" style="background: rgba(54, 54, 54, 0.5);">
-                    <h1 style="color: white; margin-bottom: 60px;">contattami</h1>
-                    <h3 style="color: white;">E-Mail</h3>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="contact">
+                <div class="jumbotron" id="jumbo" style="background: rgba(54, 54, 54, 0.5);">
+                    <h1 style="color: white; margin-bottom: 30px;">contattami</h1>
                     <form class="form-horizontal" role="form" runat="server">
                         <div class="form-group">
-                            <div class="col-sm-1">
-                                <label for="inputEmail3" class="control-label" style="color: white;">Nome</label>
+                            <div class="col-sm-1 col-xs-1">
+                                <label for="inputname" class="control-label" style="color: white;">Nome</label>
                             </div>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Nome">
+                            <div class="col-sm-5 col-xs-5">
+                                <asp:TextBox ID="txbNome" runat="server" CssClass="form-control" Placeholder="Nome"></asp:TextBox>
                             </div>
-                            <div class="col-sm-1">
-                                <label for="inputEmail3" class="control-label" style="color: white;">Email</label>
+                            <div class="col-sm-1 col-xs-1">
+                                <label for="inputEmail" class="control-label" style="color: white;">Email</label>
                             </div>
-                            <div class="col-sm-5">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <div class="col-sm-5 col-xs-5">
+                                <asp:TextBox ID="txbEmail" runat="server" CssClass="form-control" Placeholder="Email"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-1">
-                                <label for="inputEmail3" class="control-label" style="color: white;">Testo</label>
+                            <div class="col-sm-1 col-xs-1">
+                                <label for="inputtext" class="control-label" style="color: white;">Testo</label>
                             </div>
                             <div class="col-sm-11">
-                                <asp:TextBox ID="tbTesto" runat="server" CssClass="form-control" Placeholder="Testo" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="tbTesto" runat="server" CssClass="form-control" Placeholder="Testo" TextMode="MultiLine" Rows="5" style="resize:none"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-1 col-sm-10">
-                                <button type="submit" class="btn btn-default">Invia</button>
+                            <div class="col-sm-offset-1 col-sm-10 col-xs-10">
+                                <asp:Button ID="btnContatta" CssClass="btn btn-default" runat="server" OnClick="btnContatta_Click" Text="Invia" />
+                                <asp:Label ID="lblout" runat="server" Text="" style="color: white;"></asp:Label>
                             </div>
                         </div>
-                        <!--
-                        <h3 style="color: white;">Telefono</h3>
-                        <div class="form-group">
-                            <div class="col-sm-offset-0 col-sm-1">
-                                <a href="#"><i class="fa fa-3x fa-fw fa-phone-square text-inverse"></i></a>
-                            </div>
-                            <div class="col-sm-offset-0 col-sm-4">
-                                <p style="color: white;">3486440700</p>
-                            </div>
-                        </div>
-                        -->
                     </form>
                 </div>
                 </div>

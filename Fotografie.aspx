@@ -12,6 +12,11 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="galleria.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
+    <style>
+       .icon-bar {
+       background-color:black !important;
+    }   
+    </style>
 
 
 </head>

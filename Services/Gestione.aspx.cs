@@ -17,19 +17,16 @@ public partial class Services_Gestione : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            populateGroup(ddl1, ddl2);
-            populateGroup(ddl3, ddl4);
+            populateSingle(ddlCategoria, "Categoria");
         }
     }
 
-    protected void populateGroup(DropDownList ddl, DropDownList ddlFollow)
+    protected void populateSingle(DropDownList ddl, String table)
     {
         ddl.AppendDataBoundItems = true;
         ddl.Items.Clear();
-        ddl.Items.Add(new ListItem("-Categoria-", "-1"));
-        ddlFollow.Items.Add(new ListItem("-Opera-", "-1"));
-        
-        String querySubcat = "SELECT Id, Nome FROM Categoria";
+        ddl.Items.Add(new ListItem("-" + table + "-", "-1"));
+        String querySubcat = "SELECT Id, Nome FROM " + table;
         SqlConnection conn = new SqlConnection(connectionString);
         SqlCommand command = new SqlCommand();
         command.CommandType = CommandType.Text;
@@ -44,62 +41,47 @@ public partial class Services_Gestione : System.Web.UI.Page
         conn.Close();
     }
 
-    protected void editSubcat(object sender, EventArgs e)
+
+    protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
     {
-        String query = "UPDATE  SET Nome = @name WHERE Id=@id";
-        SqlConnection conn = new SqlConnection(connectionString);
+        String query = "SELECT * FROM Opera WHERE IdCategoria = @param";
 
         try
         {
+            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             SqlCommand command = new SqlCommand(query, conn);
-            command.Parameters.Add("@name", SqlDbType.VarChar);
-            command.Parameters["@name"].Value = tb1.Text;
-            command.Parameters.Add("@id", SqlDbType.Int);
-            command.Parameters["@id"].Value = ddl2.SelectedItem.Value;
-            if (command.ExecuteNonQuery() > 0)
-            {
-                lbl1.ForeColor = System.Drawing.Color.Green;
-                lbl1.Text = "Sottocategoria modificata correttamente!";
-                ddl1.Items.Clear();
-                ddl2.Items.Clear();
-                populateGroup(ddl1, ddl2);
-            }
+            command.Parameters.Add("@param", SqlDbType.VarChar);
+            command.Parameters["@param"].Value = int.Parse(ddlCategoria.SelectedItem.Value);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            ddlCategoria.DataSource = dt;
+            ddlCategoria.DataBind();
         }
         catch { }
-        finally
-        {
-            conn.Close();
-        }
     }
 
-    
-
-    protected void populateSubcatParam1(object sender, EventArgs e)
+    protected void repeaterOpere_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-        ddl2.AppendDataBoundItems = true;
-        ddl2.Items.Clear();
-        String querySubcat = "SELECT Id, Nome FROM Sottocategoria WHERE IdCategoria = @id";
-        SqlConnection conn = new SqlConnection(connectionString);
-        SqlCommand command = new SqlCommand();
-        command.Parameters.Add("@id", SqlDbType.Int);
-        command.Parameters["@id"].Value = ddl1.SelectedItem.Value;
-        command.CommandType = CommandType.Text;
-        command.CommandText = querySubcat;
-        command.Connection = conn;
+        String query = "SELECT * FROM Foto WHERE IdOpera = @cont";
 
-        if (int.Parse(ddl1.SelectedItem.Value) > 0)
+        try
         {
+            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            ddl2.DataSource = command.ExecuteReader();
-            ddl2.DataTextField = "Nome";
-            ddl2.DataValueField = "Id";
-            ddl2.DataBind();
-        }
-        else
-        {
-            ddl2.Items.Add(new ListItem("-Sottocategoria-", "-1"));
-        }
-    }
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.Add("@cont", SqlDbType.VarChar);
+            string idOpera = (e.Item.FindControl("hidden") as HiddenField).Value;
+            command.Parameters["@cont"].Value = idOpera;
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            Repeater r = e.Item.FindControl("repeaterFoto") as Repeater;
+            r.DataSource = dt;
+            r.DataBind();
 
+        }
+        catch { }
+    }
 }

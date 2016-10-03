@@ -13,7 +13,11 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="galleria.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
-
+    <style>
+       .icon-bar {
+       background-color:black !important;
+    }   
+    </style>
 
 </head>
 <body>
@@ -120,7 +124,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
                                 <a href="<%# Eval("Preview") %>" title="<%# Eval("Titolo") %>" data-gallery>
                                     <img src="<%# Eval("Preview") %>" style="margin-top: 20px;" class="img-responsive" alt="<%# Eval("Titolo") %>"></a>
-                                <h1><asp:LinkButton ID="Opera" Text='<%# Eval("Titolo") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
+                                <h1><asp:LinkButton ID="Opera" Text='<%# Eval("Titolo") %>'  runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
                                 <p><%# Eval("Descrizione") %></p>
                             </div>
                         </ItemTemplate>

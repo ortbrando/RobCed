@@ -39,8 +39,19 @@
                         <li>
                             <a href="Contatti.aspx" style="color: white;">contatti</a>
                         </li>
-                        <li>
-                            <a href="#" style="color: white;">EN</a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white;">IT&nbsp;<i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">EN</a>
+                                </li>
+                                <li>
+                                    <a href="#">ES</a>
+                                </li>
+                                <li>
+                                    <a href="#">RU</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

@@ -4064,6 +4064,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 0px;
   border: 1px solid transparent;
+  font-size: 20px;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -6765,3 +6766,6 @@ body {
 }
 /* PINGENDO COMMENT DO NOT REMOVE */
 
+.icon-bar {
+   background-color:#fff !important;
+}

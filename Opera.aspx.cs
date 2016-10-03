@@ -15,9 +15,14 @@ public partial class Opera : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        idOpera = Request.QueryString["id"].ToString();
-        bindImages();
-        bindPreview();
+        if (Request.QueryString["id"] != null)
+        {
+            idOpera = Request.QueryString["id"].ToString();
+            bindImages();
+            bindPreview();
+        }
+        else
+            Response.Redirect("Homepage.aspx");
     }
 
     protected void bindImages() {
@@ -34,7 +39,10 @@ public partial class Opera : System.Web.UI.Page
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             repeaterImages.DataSource = dt;
+            repeaterMobile.DataSource = dt;
             repeaterImages.DataBind();
+            repeaterMobile.DataBind();
+            
         }
         catch { }
     }

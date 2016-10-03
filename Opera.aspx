@@ -13,14 +13,17 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="galleria.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
-    <link href="css/opera.css" rel="stylesheet" type="text/css" />
-
+    <style>
+       .icon-bar {
+       background-color:black !important;
+    }   
+    </style>
 </head>
 <body>
     <div class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button"style="color: black;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -46,52 +49,91 @@
             </div>
         </div>
     </div>
+     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+                    <!-- The container for the modal slides -->
+                    <div class="slides"></div>
+                    <!-- Controls for the borderless lightbox -->
+                    <h3 class="title"></h3>
+                    <a class="prev">‹</a>
+                    <a class="next">›</a>
+                    <a class="close">×</a>
+                    <a class="play-pause"></a>
+                    <ol class="indicator"></ol>
+                    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+                    <div class="modal fade">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body next"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left prev">
+                                        <i class="glyphicon glyphicon-chevron-left"></i>
+                                        Previous
+                   
+                                    </button>
+                                    <button type="button" class="btn btn-primary next">
+                                        Next
+                       
+                                        <i class="glyphicon glyphicon-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
      <div class="section" style="padding-top: 0px;">
       <div class="container" style="padding-left: 50px; padding-right: 50px;">
         <div class="row">
+            <div id="links">
             <br />
-           <div class="col-md-1 hidden-sm hidden-xs"></div>
-            
-          <div class="col-md-3 hidden-sm hidden-xs">
+           <div class="col-md-1 hidden-sm hidden-xs">
+           </div> 
+           <div class="col-md-4 hidden-sm hidden-xs">
+              
               <asp:Repeater ID="repeaterImages" runat="server">
                 <ItemTemplate>
-                    <img src="<%# Eval("Immagine") %>" class="hidden-sm img-responsive " />
+                    <a href="<%# Eval("Immagine") %>" title="<%# Eval("Id") %>" data-gallery>
+                    <img src="<%# Eval("Immagine") %>" class="hidden-sm img-responsive " alt="<%# Eval("Id") %>"/> </a>
                     <br />
                 </ItemTemplate>
             </asp:Repeater>
-          </div>
+               
+           </div>
             <asp:Repeater ID="repeaterPreview" runat="server">
                 <ItemTemplate>
-                    <div class="col-md-6">
-                        <img src="<%# Eval("Preview") %>" class="img-responsive""> <br />
-                        <h2><%# Eval("Titolo") %></h2>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <a href="<%# Eval("Preview") %>" title="<%# Eval("Titolo") %>" data-gallery>
+                        <img src="<%# Eval("Preview") %>" class="img-responsive"" alt="<%# Eval("Titolo") %>" /><br /> </a>
+                        <h2><%# Eval("Titolo") %> </h2>
                         <p><%# Eval("Descrizione") %></p>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
+                
           
-            <div class="col-md-2 hidden-sm hidden-xs"></div>
+            <!-- <div class="col-md-1 hidden-sm hidden-xs"></div> -->
+                </div>
         </div>
       </div>
     </div>
-    <div class="hidden-lg hidden-md section">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
-            class="img-responsive">
-          </div>
-          <div class="col-sm-4">
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
-            class="img-responsive">
-          </div>
-          <div class="col-sm-4">
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
-            class="img-responsive">
-          </div>
+
+    <div class="section" style="padding-top: 0px;">
+      <div class="container" style="padding-left: 50px; padding-right: 50px;">
+          <div class="row hidden-lg hidden-md">
+          <asp:Repeater ID="repeaterMobile" runat="server">
+              <ItemTemplate>
+                  <div class=" hidden-lg hidden-md col-sm-4 col-xs-12">
+                  <img src="<%# Eval("Immagine") %>" class="img-responsive" alt="<%# Eval("Id") %>"> <br />
+                  </div>
+              </ItemTemplate>
+          </asp:Repeater>
+                  </div>
         </div>
-      </div>
+          
     </div>
 
 

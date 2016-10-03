@@ -13,6 +13,7 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
 {
     String connectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ToString();
     string sfondo = null;
+    string path = null;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -49,6 +50,7 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
             try
             {
                 string filename = Path.GetFileName(FileUploadControl.FileName);
+                path = "/img/homepage/" + filename;
                 sfondo = Server.MapPath("~/img/homepage/" + filename);
                 FileUploadControl.SaveAs(sfondo);
             }
@@ -59,7 +61,7 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
         }
 
         String query = "UPDATE Homepage SET Sfondo = @param1, Filosofia = @param2";
-        if (sfondo != null)
+        if (sfondo != null && path != null)
         {
             try
             {
@@ -67,7 +69,7 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.Add("@param1", SqlDbType.VarChar);
-                command.Parameters["@param1"].Value = sfondo;
+                command.Parameters["@param1"].Value = path;
                 command.Parameters.Add("@param2", SqlDbType.VarChar);
                 command.Parameters["@param2"].Value = tbFilosofia.Text;
                 command.ExecuteNonQuery();
