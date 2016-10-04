@@ -7,7 +7,7 @@
                 <h1 class="page-header" style="color: blue;">Gestione
                         <br>
                 </h1>
-                <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCategoria" AutoPostBack="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
          <div class="col-md-1">
              <asp:Repeater ID="repeaterFoto" runat="server">
                  <ItemTemplate>
-                    <img src="<%# Eval("Path") %>" class="img-responsive">
+                    <img src="<%# Eval("Immagine") %>" class="img-responsive">
                  </ItemTemplate>
              </asp:Repeater>
          </div>
@@ -34,6 +34,7 @@
             </div>
             <asp:HiddenField Value='<%# Eval("Id") %>' runat="server" ID="hidden" />
         </ItemTemplate>
+
     </asp:Repeater>
         
     

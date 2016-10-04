@@ -55,7 +55,7 @@
                     <ul class="nav nav-sidebar">
                         <li><a href="Dashboard.aspx">Dashboard</a></li>
                         <li><a href="Inserimento.aspx">Carica Opera</a></li>
-                        <li><a href="Gestione.aspx">Gestione Categorie</a></li>
+                        <li><a href="Gestione.aspx">Gestione Opere</a></li>
                     </ul>
                 </div>
             </div>

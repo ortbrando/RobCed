@@ -56,8 +56,8 @@ public partial class Services_Gestione : System.Web.UI.Page
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            ddlCategoria.DataSource = dt;
-            ddlCategoria.DataBind();
+            repeaterOpere.DataSource = dt;
+            repeaterOpere.DataBind();
         }
         catch { }
     }
