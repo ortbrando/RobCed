@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Opera.aspx.cs" Inherits="Opera" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Opera-en.aspx.cs" Inherits="Opera" %>
 
 <!DOCTYPE html>
 
@@ -34,16 +34,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="Fotografie.aspx" style="color: black;">fotomomenti</a>
+                        <a href="Fotografie.aspx" style="color: black;">photomoments</a>
                     </li>
                     <li>
-                        <a href="Materolistici.aspx" style="color: black;">materolistici</a>
+                        <a href="Materolistici.aspx" style="color: black;">materolistics</a>
                     </li>
                     <li>
-                        <a href="Quadrimensionali.aspx" style="color: black;">quadrimensionali</a>
+                        <a href="Quadrimensionali.aspx" style="color: black;">quadrimensionals</a>
                     </li>
                     <li>
-                        <a href="Contatti.aspx" style="color: black;">contatti</a>
+                        <a href="Contatti.aspx" style="color: black;">write me</a>
                     </li>
                 </ul>
             </div>
@@ -106,10 +106,10 @@
             <asp:Repeater ID="repeaterPreview" runat="server">
                 <ItemTemplate>
                     <div class="col-md-7 col-sm-12 col-xs-12">
-                        <a href="<%# Eval("Preview") %>" title="<%# Eval("TitoloIt") %>" data-gallery>
-                        <img src="<%# Eval("Preview") %>" class="img-responsive"" alt="<%# Eval("TitoloIt") %>" /><br /> </a>
-                        <h2><%# Eval("TitoloIt") %> </h2>
-                        <p><%# Eval("DescrizioneIt") %></p>
+                        <a href="<%# Eval("Preview") %>" title="<%# Eval("TitoloEn") %>" data-gallery>
+                        <img src="<%# Eval("Preview") %>" class="img-responsive"" alt="<%# Eval("Titolo") %>" /><br /> </a>
+                        <h2><%# Eval("TitoloEn") %> </h2>
+                        <p><%# Eval("DescrizioneEn") %></p>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -141,6 +141,15 @@
 
 
 </body>
+    <!--Cookie-->
+ <script src="js/cookiechoices.js"></script>
+ <script>//<![CDATA[
+     document.addEventListener('DOMContentLoaded', function (event) {
+         cookieChoices.showCookieConsentBar('Questo sito utilizza cookie tecnici e analytics, anche di terze parti. Per avere maggiori informazioni sui cookie clicca "Maggiori Informazioni".  ',
+             'Ok', 'Maggiori Informazioni',
+                      'http://www.robertocedioli.com/cookies.aspx#cookies');
+     });
+     //]]></script>
 </html>
 
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Homepage.aspx.cs" Inherits="Homepage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Homepage-en.aspx.cs" Inherits="Homepage" %>
 
 <!DOCTYPE html>
 
@@ -28,19 +28,19 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="Fotografie.aspx" style="color: white;">fotomomenti</a>
+                            <a href="Fotografie-en.aspx" style="color: white;">photomoments</a>
                         </li>
                         <li>
-                            <a href="Materolistici.aspx" style="color: white;">materolistici</a>
+                            <a href="Materolistici-en.aspx" style="color: white;">materolistics</a>
                         </li> 
                         <li>
-                            <a href="Quadrimensionali.aspx" style="color: white;">quadrimensionali</a>
+                            <a href="Quadrimensionali-en.aspx" style="color: white;">quadrimensionals</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: white;">contatti</a>
+                            <a href="Contatti-en.aspx" style="color: white;">write me</a>
                         </li>
                         <li>
-                            <a href="Homepage-en.aspx" style="color: white;">EN</a>
+                            <a href="Homepage.aspx" style="color: white;">IT</a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10 text-center">
-                    <p style="color: white;"><%# Eval("FilosofiaIt") %></p>
+                    <p style="color: white;"><%# Eval("FilosofiaEn") %></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>                    
                     <br>

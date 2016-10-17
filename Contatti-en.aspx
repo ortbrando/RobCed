@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Contatti.aspx.cs" Inherits="Contatti" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Contatti-en.aspx.cs" Inherits="Contatti" %>
 
 <!DOCTYPE html>
 
@@ -31,19 +31,19 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="Fotografie.aspx" style="color: white;">fotomomenti</a>
+                            <a href="Fotografie-en.aspx" style="color: white;">photomoments</a>
                         </li>
                         <li>
-                            <a href="Materolistici.aspx" style="color: white;">materolistici</a>
+                            <a href="Materolistici-en.aspx" style="color: white;">materolistics</a>
                         </li>
                         <li>
-                            <a href="Quadrimensionali.aspx" style="color: white;">quadrimensionali</a>
+                            <a href="Quadrimensionali-en.aspx" style="color: white;">quadrimensionals</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: white;">contatti</a>
+                            <a href="Contatti-en.aspx" style="color: white;">write me</a>
                         </li>
                         <li>
-                            <a href="Contatti-en.aspx" style="color: white;">EN</a>
+                            <a href="Contatti.aspx" style="color: white;">IT</a>
                         </li>
                     </ul>
                 </div>
@@ -58,14 +58,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="contact">
                 <div class="jumbotron" id="jumbo" style="background: rgba(54, 54, 54, 0.5);">
-                    <h1 style="color: white; margin-bottom: 30px;">scrivimi</h1>
+                    <h1 style="color: white; margin-bottom: 30px;">write me</h1>
                     <form class="form-horizontal" role="form" runat="server">
                         <div class="form-group">
                             <div class="col-sm-1 col-xs-1">
-                                <label for="inputname" class="control-label" style="color: white;">nome</label>
+                                <label for="inputname" class="control-label" style="color: white;">name</label>
                             </div>
                             <div class="col-sm-5 col-xs-5">
-                                <asp:TextBox ID="txbNome" runat="server" CssClass="form-control" Placeholder="nome"></asp:TextBox>
+                                <asp:TextBox ID="txbNome" runat="server" CssClass="form-control" Placeholder="name"></asp:TextBox>
                             </div>
                             <div class="col-sm-1 col-xs-1">
                                 <label for="inputEmail" class="control-label" style="color: white;">email</label>
@@ -76,15 +76,15 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-1 col-xs-1">
-                                <label for="inputtext" class="control-label" style="color: white;">testo</label>
+                                <label for="inputtext" class="control-label" style="color: white;">text</label>
                             </div>
                             <div class="col-sm-11">
-                                <asp:TextBox ID="tbTesto" runat="server" CssClass="form-control" Placeholder="testo" TextMode="MultiLine" Rows="5" style="resize:none"></asp:TextBox>
+                                <asp:TextBox ID="tbTesto" runat="server" CssClass="form-control" Placeholder="text" TextMode="MultiLine" Rows="5" style="resize:none"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-10 col-xs-10">
-                                <asp:Button ID="btnContatta" CssClass="btn btn-default" runat="server" OnClick="btnContatta_Click" Text="Invia" />
+                                <asp:Button ID="btnContatta" CssClass="btn btn-default" runat="server" OnClick="btnContatta_Click" Text="enter" />
                                 <asp:Label ID="lblout" runat="server" Text="" style="color: white;"></asp:Label>
                             </div>
                         </div>
@@ -97,15 +97,4 @@
             
         </div>
 </body>
-
-<!--Cookie-->
- <script src="js/cookiechoices.js"></script>
- <script>//<![CDATA[
-     document.addEventListener('DOMContentLoaded', function (event) {
-         cookieChoices.showCookieConsentBar('Questo sito utilizza cookie tecnici e analytics, anche di terze parti. Per avere maggiori informazioni sui cookie clicca "Maggiori Informazioni".  ',
-             'Ok', 'Maggiori Informazioni',
-                      'http://www.robertocedioli.com/cookies.aspx#cookies');
-     });
-     //]]></script>
-
 </html>

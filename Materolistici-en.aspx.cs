@@ -23,7 +23,7 @@ public partial class Materolistici : System.Web.UI.Page
 
     protected void getDescription()
     {
-        String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 2";
+        String query = "SELECT DescrizioneEn FROM Categoria WHERE Id = 2";
         try
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -32,7 +32,7 @@ public partial class Materolistici : System.Web.UI.Page
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
-                descrizioneCat.Text = reader["DescrizioneIt"].ToString();
+                descrizioneCat.Text = reader["DescrizioneEn"].ToString();
             }
 
         }

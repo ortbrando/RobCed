@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Materolistici : System.Web.UI.Page
+public partial class Quadrimensionali : System.Web.UI.Page
 {
     String connectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ToString();
     protected void Page_Load(object sender, EventArgs e)
@@ -23,7 +23,7 @@ public partial class Materolistici : System.Web.UI.Page
 
     protected void getDescription()
     {
-        String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 2";
+        String query = "SELECT DescrizioneEn FROM Categoria WHERE Id = 3";
         try
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -32,7 +32,7 @@ public partial class Materolistici : System.Web.UI.Page
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
-                descrizioneCat.Text = reader["DescrizioneIt"].ToString();
+                descrizioneCat.Text = reader["DescrizioneEn"].ToString();
             }
 
         }
@@ -41,7 +41,7 @@ public partial class Materolistici : System.Web.UI.Page
 
     protected void bindOperas()
     {
-         String query = "SELECT * FROM Opera WHERE IdCategoria = 2 ORDER BY Id DESC";
+        String query = "SELECT * FROM Opera WHERE IdCategoria = 3 ORDER BY Id DESC";
 
         try
         {
@@ -60,7 +60,7 @@ public partial class Materolistici : System.Web.UI.Page
     protected void Opera_Click(object sender, EventArgs e)
     {
         String s = ((LinkButton)sender).CommandArgument;
-        Response.Redirect("Opera.aspx?id="+ s);
+        Response.Redirect("Opera.aspx?id=" + s);
 
     }
     protected void OperaPreview_Click(object sender, ImageClickEventArgs e)

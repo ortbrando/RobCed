@@ -13,13 +13,34 @@ public partial class Fotografie : System.Web.UI.Page
     String connectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
-        bindOperas();
+        if (!IsPostBack)
+        {
+            getDescription();
+            bindOperas();
+        }
+            
+    }
 
+    protected void getDescription()
+    {
+        String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 1";
+        try
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            if(reader.Read()){
+                descrizioneCat.Text = reader["DescrizioneIt"].ToString();
+            }
+            
+        }
+        catch { }
     }
 
     protected void bindOperas()
     {
-        String query = "SELECT * FROM Opera WHERE IdCategoria = 2  ORDER BY Id DESC";
+        String query = "SELECT * FROM Opera WHERE IdCategoria = 1  ORDER BY Id DESC";
 
         try
         {
@@ -29,8 +50,8 @@ public partial class Fotografie : System.Web.UI.Page
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            repeater.DataSource = dt;
-            repeater.DataBind();
+            repeaterOperas.DataSource = dt;
+            repeaterOperas.DataBind();
         }
         catch { }
     }
@@ -41,5 +62,10 @@ public partial class Fotografie : System.Web.UI.Page
         Response.Redirect("Opera.aspx?id=" + s);
 
     }
-    
+
+    protected void OperaPreview_Click(object sender, ImageClickEventArgs e)
+    {
+        String s = ((ImageButton)sender).CommandArgument;
+        Response.Redirect("Opera.aspx?id=" + s);
+    }
 }

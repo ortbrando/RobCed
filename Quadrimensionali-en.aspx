@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Quadrimensionali.aspx.cs" Inherits="Quadrimensionali" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Quadrimensionali-en.aspx.cs" Inherits="Quadrimensionali" %>
 
 <!DOCTYPE html>
 
@@ -36,19 +36,19 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="Fotografie.aspx" style="color: black;">fotomomenti</a>
+                            <a href="Fotografie-en.aspx" style="color: black;">photomoments</a>
                         </li>
                         <li>
-                            <a href="Materolistici.aspx" style="color: black;">materolistici</a>
+                            <a href="Materolistici-en.aspx" style="color: black;">materolistics</a>
                         </li>
                         <li>
-                            <a href="Quadrimensionali.aspx" style="color: black; text-decoration: underline;">quadrimensionali</a>
+                            <a href="Quadrimensionali-en.aspx" style="color: black; text-decoration: underline;">quadrimensionals</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: black;">contatti</a>
+                            <a href="Contatti-en.aspx" style="color: black;">write me</a>
                         </li>
                         <li>
-                            <a href="Quadrimensionali-en.aspx" style="color: black;">EN</a>
+                            <a href="Quadrimensionali.aspx" style="color: black;">IT</a>
                         </li>
                     </ul>
                 </div>
@@ -99,8 +99,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
                                 <asp:ImageButton ID="OperaPreview" ImageUrl='<%# Eval("Preview") %>' CssClass="img-responsive" CommandArgument='<%# Eval("Id") %>' OnClick="OperaPreview_Click" runat="server" />
                                 <h1>
-                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloIt") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
-                                <p><%# Eval("DescrizioneIt") %></p>
+                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloEn") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
+                                <p><%# Eval("DescrizioneEn") %></p>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>

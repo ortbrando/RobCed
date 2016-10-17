@@ -26,7 +26,7 @@ public partial class Services_Gestione : System.Web.UI.Page
         ddl.AppendDataBoundItems = true;
         ddl.Items.Clear();
         ddl.Items.Add(new ListItem("-" + table + "-", "-1"));
-        String querySubcat = "SELECT Id, Nome FROM " + table;
+        String querySubcat = "SELECT Id, NomeIt FROM " + table;
         SqlConnection conn = new SqlConnection(connectionString);
         SqlCommand command = new SqlCommand();
         command.CommandType = CommandType.Text;
@@ -35,7 +35,7 @@ public partial class Services_Gestione : System.Web.UI.Page
 
         conn.Open();
         ddl.DataSource = command.ExecuteReader();
-        ddl.DataTextField = "Nome";
+        ddl.DataTextField = "NomeIt";
         ddl.DataValueField = "Id";
         ddl.DataBind();
         conn.Close();
@@ -64,7 +64,7 @@ public partial class Services_Gestione : System.Web.UI.Page
 
     protected void repeaterOpere_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-        String query = "SELECT * FROM Foto WHERE IdOpera = @cont";
+        String query = "SELECT * FROM Dettaglio WHERE IdOpera = @cont";
 
         try
         {

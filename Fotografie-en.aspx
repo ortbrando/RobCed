@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Materolistici.aspx.cs" Inherits="Materolistici" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fotografie-en.aspx.cs" Inherits="Fotografie" %>
 <!DOCTYPE html>
 
 <html>
@@ -9,7 +8,7 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-    <title>materolistici</title>
+    <title>fotografie</title>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/galleria.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
@@ -19,9 +18,10 @@
     }   
     </style>
 
+
 </head>
 <body>
-    <form runat="server">
+    <form id="form1" runat="server">
     <div class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -35,20 +35,20 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="Fotografie.aspx" style="color: black;">fotomomenti</a>
+                    <li class="active">
+                        <a href="Fotografie-en.aspx"  style="color: black; text-decoration: underline;">photomoments</a>
                     </li>
                     <li>
-                        <a href="Materolistici.aspx" style="color: black; text-decoration: underline;">materolistici</a>
-                    </li>                 
+                        <a href="Materolistici-en.aspx" style="color: black;">materolistics</a>
+                    </li>   
                     <li>
-                        <a href="Quadrimensionali.aspx" style="color: black;">quadrimensionali</a>
+                        <a href="Quadrimensionali-en.aspx" style="color: black;">quadrimensionals</a>
                     </li>
                     <li>
-                        <a href="Contatti.aspx" style="color: black;">contatti</a>
+                        <a href="Contatti-en.aspx" style="color: black;">write me</a>
                     </li>
                     <li>
-                        <a href="Materolistici-en.aspx" style="color: black">EN</a>
+                        <a href="Fotografie.aspx" style="color: black;">IT</a>
                     </li>
                 </ul>
             </div>
@@ -62,44 +62,25 @@
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="5"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="c4.gif" alt="...">
+                    <img src="c10.gif" alt="...">
                     <div class="carousel-caption">
                     </div>
                 </div>
                 <div class="item">
-                    <img src="c6.gif" alt="...">
+                    <img src="c11.gif" alt="...">
                     <div class="carousel-caption">
                     </div>
                 </div>
                 <div class="item">
-                    <img src="c5.gif" alt="...">
+                    <img src="c9.gif" alt="...">
                     <div class="carousel-caption">
                     </div>
                 </div>
-                <div class="item">
-                    <img src="c1.gif" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="c2.gif" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="c3.gif" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-
             </div>
 
             <!-- Controls -->
@@ -114,6 +95,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
         <div class="container">
             <div class="row">
                 <h4 class="text-center"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
@@ -124,8 +106,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
                                 <asp:ImageButton ID="OperaPreview" ImageUrl='<%# Eval("Preview") %>' CssClass="img-responsive" CommandArgument='<%# Eval("Id") %>' OnClick="OperaPreview_Click" runat="server" />
                                 <h1>
-                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloIt") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
-                                <p><%# Eval("DescrizioneIt") %></p>
+                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloEn") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
+                                <p><%# Eval("DescrizioneEn") %></p>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -137,7 +119,7 @@
 
 
 
-</form>
+    </form>
 </body>
     <!--Cookie-->
  <script src="js/cookiechoices.js"></script>
