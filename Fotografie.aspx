@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Homepage.aspx" style="color: black;">RobertoCedioli</a>
+                <a class="navbar-brand" href="Homepage-en.aspx" style="color: black;">RobertoCedioli</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
                 <ul class="nav navbar-nav navbar-right">
@@ -45,10 +45,10 @@
                         <a href="Quadrimensionali.aspx" style="color: black;">quadrimensionali</a>
                     </li>
                     <li>
-                        <a href="Contatti.aspx" style="color: black;">contatti</a>
+                        <a href="Contatti.aspx" style="color: black;">scrivimi</a>
                     </li>
                     <li>
-                        <a href="Fotografie-en.aspx" style="color: black;">EN</a>
+                        <a href="Fotografie-en.aspx" style="color: black;">english</a>
                     </li>
                 </ul>
             </div>
@@ -58,12 +58,6 @@
     <div style="padding-top: 0px;" class="section">
         <!-- Carousel -->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
@@ -95,14 +89,14 @@
                 <span class="fa fa-1x fa-chevron-right hidden-md hidden-lg" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+            <div class="row" style="padding-top: 15px;">
+                <h4 class="text-center"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
+            </div>
         </div>
 
         
 
         <div class="container">
-            <div class="row">
-                <h4 class="text-center"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
-            </div>
             <div class="row">
                     <asp:Repeater ID="repeaterOperas" runat="server">
                         <ItemTemplate>

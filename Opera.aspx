@@ -43,7 +43,10 @@
                         <a href="Quadrimensionali.aspx" style="color: black;">quadrimensionali</a>
                     </li>
                     <li>
-                        <a href="Contatti.aspx" style="color: black;">contatti</a>
+                        <a href="Contatti.aspx" style="color: black;">scrivimi</a>
+                    </li>
+                    <li>
+                        <a href="Opera-en.aspx" style="color: black;">english</a>
                     </li>
                 </ul>
             </div>

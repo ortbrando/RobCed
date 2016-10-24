@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Homepage.aspx.cs" Inherits="Homepage" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Homepage.aspx.cs" Inherits="Homepage" %>
 
 <!DOCTYPE html>
 
@@ -37,10 +38,10 @@
                             <a href="Quadrimensionali.aspx" style="color: white;">quadrimensionali</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: white;">contatti</a>
+                            <a href="Contatti.aspx" style="color: white;">scrivimi</a>
                         </li>
                         <li>
-                            <a href="Homepage-en.aspx" style="color: white;">EN</a>
+                            <a href="Homepage-en.aspx" style="color: white;">english</a>
                         </li>
                     </ul>
                 </div>

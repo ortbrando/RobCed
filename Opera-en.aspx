@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Homepage.aspx" style="color: black;">RobertoCedioli</a>
+                <a class="navbar-brand" href="Homepage-en.aspx" style="color: black;">RobertoCedioli</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
                 <ul class="nav navbar-nav navbar-right">
@@ -44,6 +44,9 @@
                     </li>
                     <li>
                         <a href="Contatti.aspx" style="color: black;">write me</a>
+                    </li>
+                    <li>
+                        <a href="Opera.aspx" style="color: black;">italiano</a>
                     </li>
                 </ul>
             </div>

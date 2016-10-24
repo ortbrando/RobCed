@@ -40,7 +40,7 @@
                             <a href="Contatti-en.aspx" style="color: white;">write me</a>
                         </li>
                         <li>
-                            <a href="Homepage.aspx" style="color: white;">IT</a>
+                            <a href="Homepage.aspx" style="color: white;">italiano</a>
                         </li>
                     </ul>
                 </div>

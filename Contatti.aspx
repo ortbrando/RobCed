@@ -40,10 +40,10 @@
                             <a href="Quadrimensionali.aspx" style="color: white;">quadrimensionali</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: white;">contatti</a>
+                            <a href="Contatti.aspx" style="color: white;">scrivimi</a>
                         </li>
                         <li>
-                            <a href="Contatti-en.aspx" style="color: white;">EN</a>
+                            <a href="Contatti-en.aspx" style="color: white;">english</a>
                         </li>
                     </ul>
                 </div>

@@ -45,10 +45,10 @@
                             <a href="Quadrimensionali.aspx" style="color: black; text-decoration: underline;">quadrimensionali</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: black;">contatti</a>
+                            <a href="Contatti.aspx" style="color: black;">scrivimi</a>
                         </li>
                         <li>
-                            <a href="Quadrimensionali-en.aspx" style="color: black;">EN</a>
+                            <a href="Quadrimensionali-en.aspx" style="color: black;">english</a>
                         </li>
                     </ul>
                 </div>
@@ -57,11 +57,6 @@
 
         <div style="padding-top: 0px;" class="section">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
@@ -88,11 +83,11 @@
                     <span class="fa fa-1x fa-chevron-right hidden-md hidden-lg" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
-            <div class="container">
-                <div class="row">
+                <div class="row" style="padding-top: 15px;">
                 <h4 class="text-center"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
             </div>
+            </div>
+            <div class="container">
                 <div class="row">
                     <asp:Repeater ID="repeaterOperas" runat="server">
                         <ItemTemplate>

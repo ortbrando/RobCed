@@ -26,7 +26,7 @@
         <div class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="Homepage.aspx" style="color: white;">RobertoCedioli</a>
+                    <a class="navbar-brand" href="Homepage-en.aspx" style="color: white;">RobertoCedioli</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -43,7 +43,7 @@
                             <a href="Contatti-en.aspx" style="color: white;">write me</a>
                         </li>
                         <li>
-                            <a href="Contatti.aspx" style="color: white;">IT</a>
+                            <a href="Contatti.aspx" style="color: white;">italiano</a>
                         </li>
                     </ul>
                 </div>
