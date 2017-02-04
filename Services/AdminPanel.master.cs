@@ -11,7 +11,6 @@ public partial class Services_AdminPanel : System.Web.UI.MasterPage
         
         if (Session["USER_ID"] != null)
         {
-            user.Text = Session["USER_ID"].ToString();
         }
         else Response.Redirect("Login.aspx");
     }

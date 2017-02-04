@@ -13,7 +13,7 @@ public partial class Login : System.Web.UI.Page
     {
         if (Session["USER_ID"] != null)
         {
-            Response.Redirect("Dashboard.aspx");
+            Response.Redirect("ModificaHomepage.aspx");
         }
     }
 
@@ -22,13 +22,14 @@ public partial class Login : System.Web.UI.Page
         string hash = md5(InputPassword.Text);
         string connectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ToString();
         String query = "SELECT Password FROM Admins WHERE Username = @indirizzo";
+		SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
+
 
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.Add("@indirizzo", SqlDbType.VarChar);
             command.Parameters["@indirizzo"].Value = InputEmail.Text;
             SqlDataReader reader = command.ExecuteReader();
@@ -37,7 +38,7 @@ public partial class Login : System.Web.UI.Page
                 if (reader["Password"].ToString() == hash)
                 {
                     Session["USER_ID"] = InputEmail.Text;
-                    Response.Redirect("Dashboard.aspx");
+                    Response.Redirect("ModificaHomepage.aspx");
                 }
 
             }
@@ -46,6 +47,10 @@ public partial class Login : System.Web.UI.Page
         }
         catch (Exception e1)
         { e1.ToString(); }
+		finally {
+			command.Dispose();
+			conn.Close();
+		}
     }
 
     private string md5(string sPassword)

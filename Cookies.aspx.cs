@@ -20,12 +20,12 @@ public partial class Cookies : System.Web.UI.Page
     protected void bindHomepage()
     {
         String query = "SELECT * FROM Homepage";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
+            conn.Open();       
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -33,5 +33,10 @@ public partial class Cookies : System.Web.UI.Page
             backgroundRepeater.DataBind();
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 }

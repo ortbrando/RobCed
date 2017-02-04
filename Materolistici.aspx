@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
@@ -20,9 +20,9 @@
     </style>
 
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <form runat="server">
-    <div class="navbar">
+    <div class="navbar navbar-fixed-top" style="background-color: white;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -104,21 +104,25 @@
                 <span class="fa fa-1x fa-chevron-right hidden-md hidden-lg" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-            <div class="row" style="padding-top: 15px;">
-                <h4 class="text-center"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
+            <div class="row" style="padding: 15px;">
+                <h4 class="text-center" style="padding: 10px;"><asp:Label ID="descrizioneCat" runat="server"></asp:Label></h4>
             </div>
         </div>
         <div class="container">
             <div class="row">
                     <asp:Repeater ID="repeaterOperas" runat="server">
+                        <HeaderTemplate><div class="row"></HeaderTemplate>
                         <ItemTemplate>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
                                 <asp:ImageButton ID="OperaPreview" ImageUrl='<%# Eval("Preview") %>' CssClass="img-responsive" CommandArgument='<%# Eval("Id") %>' OnClick="OperaPreview_Click" runat="server" />
                                 <h1>
-                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloIt") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton></h1>
+                                    <asp:LinkButton ID="Opera" Text='<%# Eval("TitoloIt") %>' runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Opera_Click"></asp:LinkButton>
+
+                                </h1>
                                 <p><%# Eval("DescrizioneIt") %></p>
                             </div>
                         </ItemTemplate>
+                        <FooterTemplate></div></FooterTemplate>
                     </asp:Repeater>
 
             </div>

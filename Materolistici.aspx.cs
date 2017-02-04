@@ -24,11 +24,12 @@ public partial class Materolistici : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 2";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
+
         try
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
+        {    
+            conn.Open();           
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -37,17 +38,22 @@ public partial class Materolistici : System.Web.UI.Page
 
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindOperas()
     {
-         String query = "SELECT * FROM Opera WHERE IdCategoria = 2 ORDER BY Id DESC";
+        String query = "SELECT * FROM Opera WHERE IdCategoria = 2 ORDER BY Id DESC";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
+        {           
+            conn.Open();          
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -55,6 +61,11 @@ public partial class Materolistici : System.Web.UI.Page
             repeaterOperas.DataBind();
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void Opera_Click(object sender, EventArgs e)

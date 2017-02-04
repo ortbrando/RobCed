@@ -12,7 +12,7 @@
 
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/galleria.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
     <style>
        .icon-bar {
        background-color:black !important;
@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <div class="navbar navbar-fixed-top" style="background-color: white;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button"style="color: black;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -57,11 +57,11 @@
                     <div class="slides"></div>
                     <!-- Controls for the borderless lightbox -->
                     <h3 class="title"></h3>
-                    <a class="prev">‹</a>
-                    <a class="next">›</a>
-                    <a class="close">×</a>
+                    <a class="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    <a class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <a class="close">torna indietro</a>
                     <a class="play-pause"></a>
-                    <ol class="indicator"></ol>
+                    <!-- <ol class="indicator"></ol> -->
                     <!-- The modal dialog, which will be used to wrap the lightbox content -->
                     <div class="modal fade">
                         <div class="modal-dialog modal-lg">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-     <div class="section" style="padding-top: 0px;">
+     <div class="section" style="padding-top: 0px; margin-top: 50px;">
       <div class="container" style="padding-left: 50px; padding-right: 50px;">
         <div class="row">
             <div id="links">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="section" style="padding-top: 0px;">
-      <div class="container" style="padding-left: 50px; padding-right: 50px;">
+      <div class="container" style="padding-left: 50px; padding-right: 50px; margin-top: 50px;">
           <div class="row hidden-lg hidden-md">
           <asp:Repeater ID="repeaterMobile" runat="server">
               <ItemTemplate>

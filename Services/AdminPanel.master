@@ -34,11 +34,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Dashboard.aspx">Dashboard</a></li>
+                        <li><a href="ModificaHomepage.aspx">Homepage</a></li>
                         <li><a href="Inserimento.aspx">Carica Opera</a></li>
                         <li><a href="Gestione.aspx">Gestione</a></li>
-                        <li style="color: white;">
-                            <a><asp:Label runat="server" ID="user"></asp:Label></a></li>
                         <li style="color: white;">
                             <asp:LinkButton runat="server" ID="logoutBut" OnClick="logoutBut_Click">Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
                             </asp:LinkButton></li>
@@ -48,7 +46,7 @@
         </nav>
 
 
-
+        <!--
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -61,10 +59,8 @@
             </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-            <asp:ContentPlaceHolder ID="Dashboard" runat="server">
-            </asp:ContentPlaceHolder>
-
+            -->
+        <div class="col-sm-12 col-md-12">
 
             <asp:ContentPlaceHolder ID="Inserimento" runat="server">
             </asp:ContentPlaceHolder>

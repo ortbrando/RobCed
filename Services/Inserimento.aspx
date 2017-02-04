@@ -5,7 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Inserisci nuova opera</h1>
+                    <h1 style="color: blue;">Inserisci nuova opera</h1>
+                    <br />
                     <h2>relativa alla categoria<asp:DropDownList AutoPostBack="true" ID="ddlCategoria" runat="server" CssClass="form-control"></asp:DropDownList></h2>
                 </div>
             </div>
@@ -38,8 +39,11 @@
                         <label class="control-label">Dettaglio 2</label>
                         <asp:FileUpload ID="fuc2" CssClass="btn btn-default" runat="server" />
                         <br />
+						<label class="control-label">IMPORTANTE! Il rapporto ideale per la visualizzazione delle foto sul sito è di 4:3</label>
+                        <!-- 
                         <label class="control-label">Dettaglio 3</label>
                         <asp:FileUpload ID="fuc3" CssClass="btn btn-default" runat="server" />
+                        -->
                         <br />
                     </div>
                     <hr />

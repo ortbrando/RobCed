@@ -24,11 +24,12 @@ public partial class Materolistici : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT DescrizioneEn FROM Categoria WHERE Id = 2";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
+
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -37,6 +38,10 @@ public partial class Materolistici : System.Web.UI.Page
 
         }
         catch { }
+        finally {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindOperas()
@@ -60,12 +65,12 @@ public partial class Materolistici : System.Web.UI.Page
     protected void Opera_Click(object sender, EventArgs e)
     {
         String s = ((LinkButton)sender).CommandArgument;
-        Response.Redirect("Opera.aspx?id="+ s);
+        Response.Redirect("Opera-en.aspx?id="+ s);
 
     }
     protected void OperaPreview_Click(object sender, ImageClickEventArgs e)
     {
         String s = ((ImageButton)sender).CommandArgument;
-        Response.Redirect("Opera.aspx?id=" + s);
+        Response.Redirect("Opera-en.aspx?id=" + s);
     }
 }

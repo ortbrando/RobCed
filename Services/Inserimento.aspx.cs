@@ -23,22 +23,24 @@ public partial class Services_Inserimento : System.Web.UI.Page
 
     protected void populateSingle(DropDownList ddl, String table)
     {
-        ddl.AppendDataBoundItems = true;
-        ddl.Items.Clear();
-        ddl.Items.Add(new ListItem("-" + table + "-", "-1"));
-        String querySubcat = "SELECT Id, NomeIt FROM " + table;
-        SqlConnection conn = new SqlConnection(connectionString);
-        SqlCommand command = new SqlCommand();
-        command.CommandType = CommandType.Text;
-        command.CommandText = querySubcat;
-        command.Connection = conn;
-
-        conn.Open();
-        ddl.DataSource = command.ExecuteReader();
-        ddl.DataTextField = "NomeIt";
-        ddl.DataValueField = "Id";
-        ddl.DataBind();
-        conn.Close();
+		String querySubcat = "SELECT * FROM " + table;
+		SqlConnection conn = new SqlConnection(connectionString);
+		SqlCommand command = new SqlCommand(querySubcat, conn);
+			
+		try {
+			ddl.AppendDataBoundItems = true;
+			ddl.Items.Clear();
+			ddl.Items.Add(new ListItem("-" + table + "-", "-1"));
+			conn.Open();
+			ddl.DataSource = command.ExecuteReader();
+			ddl.DataTextField = "NomeIt";
+			ddl.DataValueField = "Id";
+			ddl.DataBind();
+		} catch (Exception ex) {}
+		finally {
+			command.Dispose();
+			conn.Close();
+		}
     }
 
     protected string fileUpload(FileUpload control)
@@ -75,11 +77,11 @@ public partial class Services_Inserimento : System.Web.UI.Page
             }
 
             String query = "INSERT INTO Opera VALUES (@param1, @param2, @param3, @param4, @param5, @param6, 1, @param7)";
-            try
+			SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(query, conn);
+			try
             {
-                SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.Add("@param1", SqlDbType.VarChar);
                 command.Parameters["@param1"].Value = tbTitoloIt.Text;
                 command.Parameters.Add("@param2", SqlDbType.VarChar);
@@ -99,13 +101,16 @@ public partial class Services_Inserimento : System.Web.UI.Page
                 int idO = getLastId();
                 insertDetail(fileUpload(fuc1), idO);
                 insertDetail(fileUpload(fuc2), idO);
-                insertDetail(fileUpload(fuc3), idO);
+                //insertDetail(fileUpload(fuc3), idO);
                 StatusLabel.Text = "Opera inserita correttamente!";
 
             }
             catch(Exception ex) {
                 StatusLabel.Text = ex.ToString();
-            }
+            } finally {
+				command.Dispose();
+				conn.Close();
+			}
         } else {
             StatusLabel.Text = "Seleziona una categoria.";
         }
@@ -115,11 +120,12 @@ public partial class Services_Inserimento : System.Web.UI.Page
     protected int getLastId(){
         int id = -1;
         String query = "SELECT TOP 1 Id FROM Opera ORDER BY Id DESC";
+		SqlConnection conn = new SqlConnection(connectionString);
+		SqlCommand command = new SqlCommand(query, conn);
+
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -127,25 +133,34 @@ public partial class Services_Inserimento : System.Web.UI.Page
             }
 
         }
-        catch { }
+        catch(Exception ex) {
+        } finally {
+			command.Dispose();
+			conn.Close();
+		}
         return id;
     }
 
     protected void insertDetail(string path, int id)
     {
         String query = "INSERT INTO Dettaglio VALUES (@param1, @param2)";
+		SqlConnection conn = new SqlConnection(connectionString);
+		SqlCommand command = new SqlCommand(query, conn);
+
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.Add("@param1", SqlDbType.VarChar);
             command.Parameters["@param1"].Value = path;
             command.Parameters.Add("@param2", SqlDbType.Int);
             command.Parameters["@param2"].Value = id;
             command.ExecuteNonQuery();
         }
-        catch { }
+        catch(Exception ex) {
+        } finally {
+			command.Dispose();
+			conn.Close();
+		}
     }
  
 }

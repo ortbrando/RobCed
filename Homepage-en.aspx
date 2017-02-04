@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
                             <a href="Materolistici-en.aspx" style="color: white;">materolistics</a>
                         </li> 
                         <li>
-                            <a href="Quadrimensionali-en.aspx" style="color: white;">quadrimensionals</a>
+                            <a href="Quadrimensionali-en.aspx" style="color: white;">fourdimensionals</a>
                         </li>
                         <li>
                             <a href="Contatti-en.aspx" style="color: white;">write me</a>

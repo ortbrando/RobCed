@@ -21,18 +21,22 @@ public partial class Homepage : System.Web.UI.Page
     protected void bindHomepage()
     {
         String query = "SELECT * FROM Homepage";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             backgroundRepeater.DataSource = dt;
             backgroundRepeater.DataBind();
         }
-        catch { }
+        catch (Exception ex) { }
+		finally {
+			command.Dispose();
+			conn.Close();
+		}
     }
 }

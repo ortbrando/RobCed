@@ -24,30 +24,33 @@ public partial class Fotografie : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT DescrizioneEn FROM Categoria WHERE Id = 1";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
                 descrizioneCat.Text = reader["DescrizioneEn"].ToString();
             }
-
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindOperas()
     {
         String query = "SELECT * FROM Opera WHERE IdCategoria = 1  ORDER BY Id DESC";
-
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
         try
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
+        {          
+            conn.Open();           
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -55,18 +58,23 @@ public partial class Fotografie : System.Web.UI.Page
             repeaterOperas.DataBind();
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void Opera_Click(object sender, EventArgs e)
     {
         String s = ((LinkButton)sender).CommandArgument;
-        Response.Redirect("Opera.aspx?id=" + s);
+        Response.Redirect("Opera-en.aspx?id=" + s);
 
     }
 
     protected void OperaPreview_Click(object sender, ImageClickEventArgs e)
     {
         String s = ((ImageButton)sender).CommandArgument;
-        Response.Redirect("Opera.aspx?id=" + s);
+        Response.Redirect("Opera-en.aspx?id=" + s);
     }
 }

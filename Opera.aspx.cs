@@ -26,13 +26,13 @@ public partial class Opera : System.Web.UI.Page
     }
 
     protected void bindImages() {
-        String query = "SELECT TOP 3 * FROM Dettaglio WHERE IdOpera = @param";
+        String query = "SELECT TOP 2 * FROM Dettaglio WHERE IdOpera = @param";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.Add("@param", SqlDbType.Int);
             command.Parameters["@param"].Value = idOpera;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -45,16 +45,21 @@ public partial class Opera : System.Web.UI.Page
             
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindPreview() {
         String query = "SELECT * FROM Opera WHERE Id = @param";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
+        {           
+            conn.Open();            
             command.Parameters.Add("@param", SqlDbType.Int);
             command.Parameters["@param"].Value = int.Parse(idOpera);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -64,5 +69,10 @@ public partial class Opera : System.Web.UI.Page
             repeaterPreview.DataBind();
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 }

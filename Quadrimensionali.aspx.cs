@@ -24,11 +24,11 @@ public partial class Quadrimensionali : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 3";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -37,17 +37,22 @@ public partial class Quadrimensionali : System.Web.UI.Page
 
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindOperas()
     {
         String query = "SELECT * FROM Opera WHERE IdCategoria = 3 ORDER BY Id DESC";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
+        {            
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -55,6 +60,11 @@ public partial class Quadrimensionali : System.Web.UI.Page
             repeaterOperas.DataBind();
         }
         catch { }
+        finally
+        {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void Opera_Click(object sender, EventArgs e)

@@ -24,18 +24,23 @@ public partial class Fotografie : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT DescrizioneIt FROM Categoria WHERE Id = 1";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
+
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
-            if(reader.Read()){
+            if (reader.Read())
+            {
                 descrizioneCat.Text = reader["DescrizioneIt"].ToString();
             }
-            
         }
         catch { }
+        finally {
+            command.Dispose();
+            conn.Close();
+        }
     }
 
     protected void bindOperas()

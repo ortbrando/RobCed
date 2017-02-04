@@ -27,19 +27,23 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
     protected void getDescription()
     {
         String query = "SELECT Filosofia FROM Homepage";
+		SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand command = new SqlCommand(query, conn);
 
         try
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
                 tbFilosofia.Text = reader["Filosofia"].ToString();
             }
         }
-        catch { }
+        catch (Exception ex) { }
+		finally {
+			command.Dispose();
+			conn.Close();
+		}
 
     }
 
@@ -60,14 +64,16 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
             }
         }
 
-        String query = "UPDATE Homepage SET Sfondo = @param1, Filosofia = @param2";
         if (sfondo != null && path != null)
         {
+			String query = "UPDATE Homepage SET Sfondo = @param1, Filosofia = @param2";
+			SqlConnection conn = new SqlConnection(connectionString);
+			SqlCommand command = new SqlCommand(query, conn);
+
+
             try
             {
-                SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.Add("@param1", SqlDbType.VarChar);
                 command.Parameters["@param1"].Value = path;
                 command.Parameters.Add("@param2", SqlDbType.VarChar);
@@ -75,7 +81,11 @@ public partial class Services_ModificaHomepage : System.Web.UI.Page
                 command.ExecuteNonQuery();
                 StatusLabel.Text = "Homepage modificata correttamente!";
             }
-            catch { }
+            catch (Exception ex) { }
+			finally {
+				command.Dispose();
+				conn.Close();
+			}
         }
         else
         {
